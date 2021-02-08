@@ -7,11 +7,11 @@
 <div class="continer p-3">
     <div class="row p-4">
         <div class="col-6">
-            <h2 class="test-primary">Category List</h2>
+            <h2 class="text-primary">Category List</h2>
         </div>
         <div class="col-6 text-right">
             <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-                Create New Category
+                <i class="fas fa-plus"></i>&nbsp;&nbsp;Create Category
             </a>
         </div>
     </div>
@@ -34,7 +34,16 @@
                 <tr>
                     <td style="width:50%">@obj.Name</td>
                     <td style="width:30%">@obj.DisplayOrder</td>
-                    <td></td>
+                    <td class="text-center">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="btn-group col-md-8">
+                                <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </td>
                 </tr>
                 }
             </tbody>
