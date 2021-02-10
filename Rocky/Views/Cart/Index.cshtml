@@ -1,0 +1,22 @@
+﻿@model Rocky.Models.ViewModels.CartVM
+
+<div class="container">
+    
+    <br />
+    <div class="row">
+
+        @if (Model.Products.Count() > 0)
+        {
+            foreach (var prod in Model.Products)
+            {
+                <partial name="_ProductCard" model="prod" />
+                //display all the propducts using a partial view, so that we can reuse that view somewhere else
+
+            }
+        }
+        else
+        {
+            <h1>Cart Is Empty!</h1>
+        }
+    </div>
+</div>

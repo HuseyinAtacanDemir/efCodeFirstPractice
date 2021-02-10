@@ -9,6 +9,8 @@ using Rocky.Models;
 using Rocky.Data;
 using Rocky.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Rocky.Utility;
 
 namespace Rocky.Controllers
 {
@@ -33,6 +35,57 @@ namespace Rocky.Controllers
             };
             return View(homeVM);
         }
+
+        public IActionResult Details(int id)
+        {
+
+            List<CartItem> cartList = new List<CartItem>();
+            if (HttpContext.Session.Get<IEnumerable<CartItem>>(WebConst.SessionCart) != null && HttpContext.Session.Get<IEnumerable<CartItem>>(WebConst.SessionCart).Count() > 0)
+            {
+                cartList = HttpContext.Session.Get<List<CartItem>>(WebConst.SessionCart);
+            }
+
+
+            DetailsVM detailsVM = new DetailsVM()
+            {
+                Product = _db.Product.Include(u => u.Category).Include(u => u.ApplicationType)
+                .Where(u => u.Id == id).FirstOrDefault(),
+                ExistsInCart = false
+                
+            };
+            if (cartList.Where(u=>u.ProductId==detailsVM.Product.Id).Count() > 0)
+            {
+                detailsVM.ExistsInCart = true;
+            }
+            return View(detailsVM);
+        }
+
+        [HttpPost, ActionName("Details")]
+        public IActionResult DetailsPost(int id)
+        {
+
+            List<CartItem> cartList = new List<CartItem>();
+            if (HttpContext.Session.Get<IEnumerable<CartItem>>(WebConst.SessionCart)!=null && HttpContext.Session.Get<IEnumerable<CartItem>>(WebConst.SessionCart).Count() > 0)
+            {
+                cartList = HttpContext.Session.Get<List<CartItem>>(WebConst.SessionCart);
+            }
+
+            if (cartList.Where(u => u.ProductId == id).Count() > 0)
+            {
+                cartList.Remove(cartList.Where(u => u.ProductId == id).FirstOrDefault());
+            }
+            else
+            {
+                cartList.Add(new CartItem() { ProductId = id });
+            }
+
+            
+            HttpContext.Session.Set(WebConst.SessionCart, cartList);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
         public IActionResult Privacy()
         {

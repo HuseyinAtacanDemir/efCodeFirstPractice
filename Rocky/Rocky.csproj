@@ -3,5 +3,64 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.tools" Version="5.0.2">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.2" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
+    </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Data\" />
+      <Folder Include="Views\Category\" />
+      <Folder Include="Views\ApplicationType\" />
+      <Folder Include="wwwroot\fontawesome\" />
+      <Folder Include="Views\Product\" />
+      <Folder Include="Models\ViewModels\" />
+      <Folder Include="wwwroot\img\" />
+      <Folder Include="wwwroot\img\productImg\" />
+      <Folder Include="Utility\" />
+      <Folder Include="Views\Cart\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Remove="Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
+      <Content Remove="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\_StatusMessage.cshtml" />
+      <Content Remove="Areas\Identity\Pages\_ViewImports.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\AccessDenied.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\ExternalLogin.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\ForgotPassword.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\ConfirmEmail.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Lockout.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\LoginWith2fa.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Login.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\_Layout.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Logout.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\DeletePersonalData.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\LoginWithRecoveryCode.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\Disable2fa.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\DownloadPersonalData.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\Email.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\EnableAuthenticator.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\ResetAuthenticator.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\SetPassword.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\ShowRecoveryCodes.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\Register.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\RegisterConfirmation.cshtml" />
+      <Content Remove="Areas\Identity\Pages\Account\ResendEmailConfirmation.cshtml" />
+    </ItemGroup>
 </Project>
