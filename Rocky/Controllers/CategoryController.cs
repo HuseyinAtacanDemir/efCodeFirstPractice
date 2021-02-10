@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Rocky.Data;
 using Rocky.Models;
@@ -10,6 +11,7 @@ using Rocky.Models;
 
 namespace Rocky.Controllers
 {
+    [Authorize(Roles = WebConst.AdminRole)]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _db;

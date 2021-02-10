@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
+                        @if(User.IsInRole(WebConst.AdminRole))
+                        {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Content Management
@@ -46,17 +49,18 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="ApplicationType" asp-action="Index">Application</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Product</a>
-                                @if (User.IsInRole(WebConst.AdminRole))
-                                {
+                                
+                                
                                     <div class="dropdown-divider"></div>
-                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="Account/Register">Create Admin User</a>
-                                }
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Create Admin User</a>
+                                
 
 
 
                                 @*<a class="dropdown-item" href="#">Something else here</a>*@
                             </div>
                         </li>
+                        }
                         <li>
                             @if (HttpContextAccessor.HttpContext.Session.Get<List<CartItem>>(WebConst.SessionCart) != null)
                             {
@@ -105,3 +109,11 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+@if (TempData["registeredNewAdmin"] != null)
+{
+    <script>
+        Swal.fire("Success", '@TempData["registeredNewAdmin"]');
+
+    </script>
+}

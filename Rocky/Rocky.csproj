@@ -16,6 +16,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.2" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
+        <PackageReference Include="Mailjet.Api" Version="2.0.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,6 +30,7 @@
       <Folder Include="wwwroot\img\productImg\" />
       <Folder Include="Utility\" />
       <Folder Include="Views\Cart\" />
+      <Folder Include="wwwroot\templates\" />
     </ItemGroup>
     <ItemGroup>
       <Content Remove="Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml" />

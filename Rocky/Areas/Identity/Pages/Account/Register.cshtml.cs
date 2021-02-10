@@ -120,7 +120,15 @@ namespace Rocky.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        if (!User.IsInRole(WebConst.AdminRole))
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                        }
+                        else
+                        {
+                            TempData["registeredNewAdmin"] = "New Admin User Successfully Registered!";
+                            return RedirectToAction("Index");
+                        }
                         return LocalRedirect(returnUrl);
                     }
                 }
